@@ -1,0 +1,11 @@
+---
+
+# simply override defaults for user-slice.d
+- name: Set cgoup limits for all users
+  ansible.builtin.lineinfile:
+    path: /usr/lib/systemd/system/user-.slice.d/10-defaults.conf
+    regexp: "^{{ item.0 }}"
+    insertafter: '^\[Slice\]'
+    line: "{{ item.0 }}={{ item.1 }}"
+  loop: "{{ slice_limits | zip(slice_values) | list }}"
+

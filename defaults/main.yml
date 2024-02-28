@@ -1,0 +1,9 @@
+---
+# defaults file for ansible_role_systemd_sliced
+
+
+# cgroup vars. CpuQuota 100% corresponds to using a single core fully.
+# https://www.freedesktop.org/software/systemd/man/systemd.resource-control.html
+
+slice_limits: ['TasksMax', 'MemoryMax', 'CPUQuota']
+slice_values: ['10%','2G','100%']

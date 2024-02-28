@@ -1,0 +1,5 @@
+---
+# tasks file for ansible_role_systemd_sliced
+
+- include_tasks: redhat.yml
+  when: ansible_os_family == "RedHat"
